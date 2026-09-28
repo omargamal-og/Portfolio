@@ -6,10 +6,11 @@ interface Project {
   title: string;
   type: string;
   description: string;
+  founders?: string[];
   stack: string[];
   repo?: string;
   live?: string;
-  theme: 'fbs' | 'hrms' | 'amazon' | 'quiz';
+  theme: 'fbs' | 'hrms' | 'nuqoush' | 'amazon' | 'quiz';
   featured?: boolean;
 }
 
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
   protected readonly introVisible = signal(true);
   protected readonly menuOpen = signal(false);
   protected readonly currentYear = new Date().getFullYear();
+  protected readonly cvUrl = new URL('cv/Omar-Gamal-Frontend-Developer-CV.pdf', document.baseURI).toString();
 
   protected readonly projects: Project[] = [
     {
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit {
       description: 'A premium Angular experience for a Saudi contracting company, built around strong motion, bilingual RTL/LTR UX, selected projects and an interactive Saudi project footprint.',
       stack: ['Angular 21', 'Signals', 'SCSS', 'Localization', 'RTL/LTR', 'SVG Motion'],
       repo: 'https://github.com/omargamal-og/fbs-contracting-demo',
+      live: 'https://omargamal-og.github.io/fbs-contracting-demo/',
       theme: 'fbs',
       featured: true
     },
@@ -49,6 +52,17 @@ export class AppComponent implements OnInit {
     },
     {
       number: '03',
+      title: 'Nuqoush',
+      type: 'Arabic Art Brand Website',
+      description: 'An Arabic-first visual brand website for Nuqoush, showcasing original artwork through a responsive gallery-led experience with RTL support, artwork previews, and commission-focused calls to action.',
+      founders: ['Aliaa Gamal', 'Omina Gamal'],
+      stack: ['Angular', 'TypeScript', 'SCSS', 'Responsive Design', 'RTL', 'Artwork Gallery'],
+      repo: 'https://github.com/omargamal-og/noqosh',
+      live: 'https://noqosh.vercel.app/',
+      theme: 'nuqoush'
+    },
+    {
+      number: '04',
       title: 'Amazon UI',
       type: 'Responsive Commerce Frontend',
       description: 'An earlier frontend build focused on responsive composition, product presentation and JavaScript-powered interactions across desktop and mobile layouts.',
@@ -58,7 +72,7 @@ export class AppComponent implements OnInit {
       theme: 'amazon'
     },
     {
-      number: '04',
+      number: '05',
       title: 'Quiz App',
       type: 'Interactive JavaScript Experience',
       description: 'A lightweight interactive quiz with dynamic question rendering, score tracking and instant feedback, built to sharpen DOM and state fundamentals.',
